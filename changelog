@@ -1,0 +1,80 @@
+xinv3d (1.3.6-6) unstable; urgency=low
+
+  * Updatd build dependency on x-dev to x11proto-core-dev (closes:
+    #515418)
+  * Added DEB_BUILD_OPTIONS tests to debian/rules
+  * Bumped Standards-Version to 3.8.0
+  * Added copyright statement to debian/copyright (fix lintian warning)
+
+ -- Chris Butler <chrisb@debian.org>  Sun, 15 Feb 2009 20:06:56 +0000
+
+xinv3d (1.3.6-5) unstable; urgency=low
+
+  * Updated menu entry for new menu policy
+  * Updated my address in debian/copyright
+  * Bumped Standards-Version to 3.7.2 (no changes required)
+  * Updated debhelper usage to latest standards
+  * Fixed Makefile so clean doesn't fail when already clean
+
+ -- Chris Butler <chrisb@debian.org>  Thu,  5 Jul 2007 13:25:59 +0100
+
+xinv3d (1.3.6-4) unstable; urgency=low
+
+  * Bumped Standards-Version to 3.6.2
+  * Updated build-depends to get rid of obsolete xlibs-dev package
+  * Quoted strings in debian/menu to get rid of lintian warning
+
+ -- Chris Butler <chrisb@debian.org>  Mon, 16 Jun 2003 21:45:37 +0100
+
+xinv3d (1.3.6-3) unstable; urgency=low
+
+  * Incorporated changes from NMU, and bumped Standards-Version to 3.5.9
+    (closes: #170187)
+
+ -- Chris Butler <chrisb@debian.org>  Sun,  6 Apr 2003 19:21:42 +0100
+
+xinv3d (1.3.6-2.1) unstable; urgency=low
+
+  * Non-Maintainer Upload
+  * debian/control:
+    - Bumped Standards-Version to 3.5.8
+    - Replaced xlib6g-dev build dependency with xlibs-dev. Closes: #170187
+    - Updated debhelper build-dependency to version 4
+  * debian/rules: switched DH_COMPAT to 4
+  * debian/copyright: removed dh_make boilerplate in authors
+    description.
+
+ -- Jerome Marant <jerome@debian.org>  Sat,  8 Mar 2003 13:39:29 +0100
+
+xinv3d (1.3.6-2) unstable; urgency=low
+
+  * Remove CVS directories from source package
+  * Add missing build dependancy on debhelper (closes: #77880)
+
+ -- Chris Butler <chrisb@debian.org>  Thu, 15 Nov 2001 00:29:39 +0000
+
+xinv3d (1.3.6-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Chris Butler <chrisb@debian.org>  Wed, 22 Nov 2000 18:29:24 +0000
+
+xinv3d (1.3.1-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/menu: fix typo - "/usr/bin/xinv3d" -> "/usr/games/xinv3d"
+    (closes: #58844)
+
+ -- Chris Butler <chrisb@sandy.force9.co.uk>  Mon, 13 Mar 2000 20:16:22 +0000
+
+xinv3d (1.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Chris Butler <chrisb@sandy.force9.co.uk>  Sun,  6 Feb 2000 14:48:33 +0000
+
+xinv3d (1.2-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Chris Butler <chrisb@sandy.force9.co.uk>  Sun,  6 Feb 2000 14:24:06 +0000

@@ -18,8 +18,8 @@ game: $(OBJS) $(DEPENDS)
 	$(CC) -o xinv3d $(OBJS) $(XLIB) $(LIBS) $(OPTIONS)
 
 clean:
-	rm *.o
-	rm xinv3d
+	rm -f *.o
+	rm -f xinv3d
 
 aliens.o: aliens.c game.h vec4x1.h mat4x4.h camera.h system.h defines.h \
  object.h externs.h

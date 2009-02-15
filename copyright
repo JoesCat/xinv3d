@@ -1,0 +1,12 @@
+This package was debianized by Chris Butler <chrisb@debian.org> on
+Sun,  6 Feb 2000 14:24:06 +0000.
+
+It was downloaded from http://xinvaders3d.sourceforge.net/
+
+Upstream Author: Don Llopis <del23@users.sourceforge.net>
+
+Copyright: Copyright (C) 2000 Don Llopis
+
+xinv3d is distributed under the terms of the GNU General Public License.
+On Debian systems, a copy of this license can be found in 
+/usr/share/common-licenses/GPL.

@@ -1,0 +1,13 @@
+Source: xinv3d
+Section: games
+Priority: optional
+Maintainer: Chris Butler <chrisb@debian.org>
+Standards-Version: 3.8.0
+Build-Depends: libx11-dev, x11proto-core-dev, debhelper (>> 4.0.0)
+
+Package: xinv3d
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: 3D space invaders for X
+ XInvaders 3D is a 3D vector-based space-invaders clone for
+ the X Window System.

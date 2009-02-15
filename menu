@@ -1,0 +1,1 @@
+?package(xinv3d):needs="X11" section="Games/Action" title="XInvaders 3D" command="/usr/games/xinv3d"
