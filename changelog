@@ -1,3 +1,12 @@
+xinv3d (1.3.6-6.1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTCBFS: (Closes: #-1)
+    + Let dh_auto_build pass cross tools to make.
+    + Defer stripping to dh_strip.
+
+ -- Helmut Grohne <helmut@subdivi.de>  Tue, 27 Nov 2018 19:34:01 +0100
+
 xinv3d (1.3.6-6) unstable; urgency=low
 
   * Updatd build dependency on x-dev to x11proto-core-dev (closes:

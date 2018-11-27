@@ -3,7 +3,7 @@ Section: games
 Priority: optional
 Maintainer: Chris Butler <chrisb@debian.org>
 Standards-Version: 3.8.0
-Build-Depends: libx11-dev, x11proto-core-dev, debhelper (>> 4.0.0)
+Build-Depends: libx11-dev, x11proto-core-dev, debhelper (>> 7)
 
 Package: xinv3d
 Architecture: any

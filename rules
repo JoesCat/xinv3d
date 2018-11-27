@@ -7,9 +7,6 @@
 CFLAGS = -g -Wall -ansi
 INSTALL = install
 
-ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-	INSTALL += -s
-endif
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 	CFLAGS += -O0
 else
@@ -29,7 +26,7 @@ build-stamp:
 	dh_testdir
 
 	# Add here commands to compile the package.
-	$(MAKE) "CFLAGS=$(CFLAGS)"
+	dh_auto_build -- "CFLAGS=$(CFLAGS)"
 
 	touch build-stamp
 
