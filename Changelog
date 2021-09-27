@@ -1,3 +1,12 @@
+xinv3d (1.4.0)
+
+  * Debian Orphaned xinv3d brought up to date and is buildable with current PCs.
+  * Updated xinv3d to get built using autoreconf -i and automake.
+  * removed compat file (mentioned in debian issue #965904).
+  * Added freedesktop and new icons (mentioned in debian issue #738066).
+
+ -- Joe Da Silva <digital@joescat.com>  Mon, 27 Sep 2021 09:36:00 -0800
+
 xinv3d (1.3.6-6.1) UNRELEASED; urgency=medium
 
   * Non-maintainer upload.
@@ -9,7 +18,7 @@ xinv3d (1.3.6-6.1) UNRELEASED; urgency=medium
 
 xinv3d (1.3.6-6) unstable; urgency=low
 
-  * Updatd build dependency on x-dev to x11proto-core-dev (closes:
+  * Updated build dependency on x-dev to x11proto-core-dev (closes:
     #515418)
   * Added DEB_BUILD_OPTIONS tests to debian/rules
   * Bumped Standards-Version to 3.8.0
