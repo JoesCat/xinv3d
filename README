@@ -1,5 +1,5 @@
 
-XInvaders 3D v1.3.6
+XInvaders 3D v1.4.0
 -=-=-=-=-=-=-=-=-=-
 XInvaders 3D is a vector-graphics Space Invaders clone
 for the X Window System.
@@ -7,8 +7,8 @@ for the X Window System.
 ================================================================
 
 Objective:
--=-=-=-=-=-
-Clear all the aliens in each level. The UFO yields bonus 
+-=-=-=-=-=
+Clear all the aliens in each level. The UFO yields bonus
 points if hit. A new life will be added every 7500 points.
 
 Game-over: either if the player has lost all its lives
@@ -49,34 +49,38 @@ How to compile and play the game:
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 1. Requirements: gcc and Xlib
-2. Compile the game, type: make
-3. Run the game, type: ./xinv3d
+2. If you have xinv3d-dist-{version}.tar.gz, skip to step 5.
+3. run autoreconf -i
+4. run automake
+5. run ./configure (options)
+6. Compile the game, type: make
+7. Run game, type: xinv3d or select menu: Games/Arcade/xinv3d
 
 note:
-You may have to edit the Makefile depending on where
-your headers and libraries are. For other systems please
-see the README.xxx for that system.
+For Makefile.dos or Makefile.win you may need to edit the
+Makefile.xxx depending on where your headers and libraries are.
+For those systems please see the README.xxx for that system.
 
 ================================================================
 
-Contact Author:
--=-=-=-=-=-=-=-
+Original Author and Original Website:
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 Don Llopis
 del23@users.sourceforge.net
 http://xinvaders3d.sourceforge.net
 
 ================================================================
 
-Greetings:
--=-=-=-=-=-
-Greets to following people whose games helped inspire 
+Original Greetings (from Don Llopis):
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Greets to following people whose games helped inspire
 this project:
 
-Bill Kendrick 
+Bill Kendrick
 who wrote ICBM3d http://www.newbreedsoftware.com
 
 Yuusuke Hashimoto
-who wrote XSoldier http://www.surfline.ne.jp/hachi/xsoldier.html 
+who wrote XSoldier http://www.surfline.ne.jp/hachi/xsoldier.html
 
 James Eibisch
 who wrote a Space Invaders clone in quick-basic
@@ -100,19 +104,32 @@ Bill Kendrick for the Window Manager fix.
 
 ================================================================
 
+Current Maintainer and Current Website:
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Joe Da Silva
+https://github.com/JoesCat/xinv3d/releases
+
+================================================================
+
 History:
 -=-=-=-=-
 
+1.4.0
+      Updated xinv3d to get built using autoreconf -i and automake.
+      Added freedesktop and new menu icons (see debian issue #738066).
+      Removed compat file (see debian issue #965904).
+      Added patch by Helmut Grohne to fix FTCBFS (unreleased 1.3.6-6.1).
+
 1.3.6:
-		Minor fixes.
-		Changed some game text which had the wrong
-		contact information.
-		Made some more code clean ups.
+      Minor fixes.
+      Changed some game text which had the wrong
+      contact information.
+      Made some more code clean ups.
 
 1.3.5:
-      Moved all game text to gtext.h. 
+      Moved all game text to gtext.h.
       Removed `goto' in init code.
-      Put a space in ``game over.'' 
+      Put a space in ``game over.''
 
 1.32-1.34:
       Minor fixes.
@@ -121,12 +138,12 @@ History:
       Fixed drawing order. Objects were being drawn in reverse.
 
 1.3:
-      Many thanks to Thomas Boutell, he has contributed a 
+      Many thanks to Thomas Boutell, he has contributed a
       Windows port of XInvaders 3D. See README.win for more
-      information. 
+      information.
 
       XInvaders 3D DOS port finished. XInvaders 3D will now run
-      as a full-screen 640x480x8 DOS game. For windows users it 
+      as a full-screen 640x480x8 DOS game. For windows users it
       will run in a DOS window just fine. I used DJGPP+Allegro
       to port it. See README.dos for more information.
 
@@ -148,20 +165,20 @@ History:
       more.
 
       New Distance-of-Point-to-Line routine, used for
-      collision detection. 
+      collision detection.
 
       Added fix for FreeBSD systems, thanks to Peter da Silva.
 
-      Fixed ZONE_HEIGHT bug in game.c, which was generating 
+      Fixed ZONE_HEIGHT bug in game.c, which was generating
       bad pointers, thanks to Sam Bushell.
 
       Cleaned up code, for portability reasons, thanks to
       Thomas Boutell for his help.
 
-      Left-Shift key is no longer being used. 
+      Left-Shift key is no longer being used.
 
-1.2: 
-      Cleaned up some more code. 
+1.2:
+      Cleaned up some more code.
 
       Adjusted formation movement.
 
@@ -170,7 +187,7 @@ History:
       Fixed some warnings which the pedantic flag generates,
       thanks to Jarmo Pussinen for pointing them out.
 
-1.1:  
+1.1:
       Fixed incompatible pointer warnings.
 
       Fixed window manager bug which Bill Kendrick pointed out.
