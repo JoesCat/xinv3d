@@ -359,13 +359,11 @@ void Game_overlay ( void )
       Draw_line ( life[2]+x, life[3], life[4]+x, life[5], GREEN );
       Draw_line ( life[4]+x, life[5], life[0]+x, life[1], GREEN );
       x+= 30;
-#ifdef GAME_DEBUG
-      sprintf ( buffer, "Lives: %d", gv->plives-1 );
-      Draw_text ( buffer, 550, 470, GREEN );
-#endif
    }
-
 #ifdef GAME_DEBUG
+   sprintf ( buffer, "Lives: %d", gv->plives-1 );
+   Draw_text ( buffer, 550, 470, GREEN );
+
    sprintf ( buffer, "Time: %10.0fs", (double)gv->sw_t/1000);
    Draw_text ( buffer, 0, 470, RED );
 
@@ -374,7 +372,6 @@ void Game_overlay ( void )
          gv->key_FIRE );
    Draw_text ( buffer, 200, 470, WHITE );
 #endif
-
 }
 
 /*================================================================*/
@@ -627,26 +624,18 @@ void Object_update_zone ( OBJECT *obj )
 
 static void Draw_vector_font ( int *s[], int x, int y, unsigned int color )
 {
-   int i, j, X, segments;
-   int *letter;
+   int *letter, segments, x1, y1, x2, y2;
 
-   i = 0;
-   X = x;
-   letter = s[0];
-
-   do
-   {
+   while ( (letter=*s++) ) {
       /* first integer of pointer array is always # of line segments */
-      segments = *letter++;
-      for ( j=0; j<segments; j++ )
-      {
-         Draw_line ( (*(letter+(j*4)))+X, (*(letter+(j*4)+1))+y,
-                     (*(letter+(j*4)+2))+X, (*(letter+(j*4)+3))+y, color );
+      segments=*letter++;
+      while ( --segments>=0 ) {
+         x1 = (*letter++)+x; y1 = (*letter++)+y;
+         x2 = (*letter++)+x; y2 = (*letter++)+y;
+         Draw_line( x1, y1, x2, y2, color );
       }
-      letter = s[++i];
-      X += 30;
+      x += 30;
    }
-   while ( letter );
 }
 
 /*================================================================*/
