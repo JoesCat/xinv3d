@@ -38,14 +38,14 @@ static void  Draw_vector_font ( int *s[], int x, int y, unsigned int color );
 
 /*------------------------------------------------------------------
  * Variables
- *  
+ *
  *
 ------------------------------------------------------------------*/
 
 GAMEVARS gvars, *gv;
 TIMER    gtimer, *gt;
 
-static long 
+static long
 score_table[ZONE_HEIGHT_MAX] = { 10L, 50L, 100L, 150L, 200L };
 
 /*================================================================*/
@@ -59,10 +59,10 @@ void Game_main ( void )
       gv->ftime   = (double)gv->msec/1000L;
       gv->fps     = 1.0 / gv->ftime;
       gv->fadjust = gv->rfps / gv->fps;
-      
-      (*Game_actionfn)(); 
-      
-      Update_display (); 
+
+      (*Game_actionfn)();
+
+      Update_display ();
    }
 }
 
@@ -78,7 +78,7 @@ int Game_init ( float win_width, float win_height )
    gv = &gvars;
    Game_init_vars ( INITGAME );
    Game_init_keys ();
-   
+
    Stars_init ();
    Jumpgate_init ();
    Camera_init ( win_width, win_height, 0.785398163 );
@@ -165,7 +165,7 @@ void Game_menu ( void )
    static int color = 0;
    int        i, *tmp_score[20];
    char       buffer[256], tmp_num[2];
-   
+
    VECTOR4 up = { 0.0f, 1.0f, 0.0f, 1.0f };
    VECTOR4 from = { 0.0f, 0.0f, 100.0f, 1.0f };
    VECTOR4 at = { 0.0f, 0.0f, 0.0f, 1.0f };
@@ -186,7 +186,7 @@ void Game_menu ( void )
 
    Camera_transform ( cam_mat, up, from, at );
    Stars_draw ( cam_mat );
-   
+
    blink += gv->msec;
    if ( blink > 250 )
    {
@@ -221,7 +221,7 @@ void Game_ready ( void )
    VECTOR4 from = { 0.0f, 0.0f, 100.0f, 1.0f };
    VECTOR4 at = { 0.0f, 0.0f, 0.0f, 1.0f };
    MATRIX4 cam_mat;
-   
+
    Camera_transform ( cam_mat, up, from, at );
    Stars_draw ( cam_mat );
 
@@ -240,9 +240,8 @@ void Game_ready ( void )
 
    Game_overlay ();
    SW_UPDATE;
-   
-   if ( gv->key_FIRE || 
-      ( gv->sw_t > READY_TIME ) )
+
+   if ( gv->key_FIRE || gv->sw_t > READY_TIME )
    {
       SW_RESET;
       Game_actionfn = Game_run;
@@ -254,9 +253,9 @@ void Game_ready ( void )
 void Game_paused_toggle ( void )
 {
    static void (*saved_action_fn)( void ) = NULL;
-   
+
    gv->paused ^= TRUE;
-   
+
    if ( gv->paused )
    {
       SW_PAUSE;
@@ -276,7 +275,7 @@ void Game_paused ( void )
    VECTOR4 from = { 0.0f, 0.0f, 100.0f, 1.0f };
    VECTOR4 at = { 0.0f, 0.0f, 0.0f, 1.0f };
    MATRIX4 cam_mat;
-   
+
    Camera_transform ( cam_mat, up, from, at );
    Stars_draw ( cam_mat );
    Draw_vector_font ( PAUSED, 230, 200, RED );
@@ -301,7 +300,7 @@ void Game_gameover ( void )
    VECTOR4 from = { 0.0f, 0.0f, 100.0f, 1.0f };
    VECTOR4 at = { 0.0f, 0.0f, 0.0f, 1.0f };
    MATRIX4 cam_mat;
-   
+
    Camera_transform ( cam_mat, up, from, at );
    Stars_draw ( cam_mat );
    Draw_vector_font ( GAME, 165, 200, RED );
@@ -324,13 +323,13 @@ void Game_overlay ( void )
 {
    char buffer[256], tmp_num[2];
    int  i, x, *tmp_score[20];
-   int  life[6] = { 0, 450, 25, 450, 12, 425 }; 
+   int  life[6] = { 0, 450, 25, 450, 12, 425 };
 
    if ( gv->display_fps )
    {
       if ( gv->ftime > 0.0f )
       {
-         sprintf ( buffer, "FPS:%3.0f:(%1.3f):ms(%ld)", gv->fps, 
+         sprintf ( buffer, "FPS:%3.0f:(%1.3f):ms(%ld)", gv->fps,
                             gv->fadjust,gv->msec );
       }
       else
@@ -338,7 +337,7 @@ void Game_overlay ( void )
 
       Draw_text ( buffer, 0, 475, RED );
    }
-  
+
    /* convert score into a vector-font */
    sprintf ( buffer, "%ld", gv->pscore );
    tmp_num[0] = '0';
@@ -390,7 +389,7 @@ void Game_run ( void )
    MATRIX4    cam_mat;
 
    /* prepare for new frame */
-   Clear_obj_list ();   
+   Clear_obj_list ();
 
    /* update-player */
    if ( player->active )
@@ -402,7 +401,7 @@ void Game_run ( void )
    Camera_transform ( cam_mat, up, from, at );
 
    /*
-    * Do collisions checking : 
+    * Do collisions checking :
     * player_missile vs aliens
     * player vs alien(s)
     * alien bombs vs player
@@ -411,7 +410,7 @@ void Game_run ( void )
    if ( pm->active )
    {
       /* is player missile in the formation zone ?? */
-      if ( pm->zone == gv->formation_zone ) 
+      if ( pm->zone == gv->formation_zone )
       {
          if ( ( pm->zheight > -1 ) && (pm->zheight < ZONE_HEIGHT_MAX ) )
          {
@@ -425,7 +424,7 @@ void Game_run ( void )
                if ( dist < alien->radius_squared )
                {
                   pm->active = alien->active = FALSE;
-                  gv->alien_count--; 
+                  gv->alien_count--;
                   Objlist_del    ( (af_list+pm->zheight), alien );
                   Explosions_add ( alien );
                   Aliens_update  ( alien );
@@ -444,7 +443,7 @@ void Game_run ( void )
                   }
                   if ( gv->alien_count == 0 )
                      gv->new_level = TRUE;
-                  
+
                   break;
                }
                alien = alien->next;
@@ -454,12 +453,12 @@ void Game_run ( void )
       /* is player missile in the UFO zone?? */
       else
       {
-         if ( (ufo->active) 
+         if ( (ufo->active)
             &&  ( pm->zone == ufo->zone )
-            && ( pm->zheight == ufo->zheight ) ) 
+            && ( pm->zheight == ufo->zheight ) )
          {
             dist = Dist_pt_2_line ( ufo->pos, pm->old_pos, pm->pos ) -
-              pm->radius_squared - 1.0f; 
+              pm->radius_squared - 1.0f;
             if ( dist < ufo->radius_squared )
             {
                pm->active = ufo->active = FALSE;
@@ -482,13 +481,13 @@ void Game_run ( void )
       }
 
    }
-   
+
    /* alien bombs vs player */
    if ( player->active && !gv->gameover && !gv->pblinking )
    {
       for (abomb=abombs->head; abomb != NULL; abomb=abomb->next )
       {
-         if ( (abomb->zone == player->zone) && 
+         if ( (abomb->zone == player->zone) &&
               (abomb->zheight == player->zheight) )
          {
             dist = Dist_pt_2_line ( player->pos, abomb->old_pos, abomb->pos ) -
@@ -504,8 +503,8 @@ void Game_run ( void )
          }
       }
    }
-   
-   /* 
+
+   /*
     * player vs aliens:
     * if the remaining aliens reach the player_zone
     * then the game is over! Reduce the number of
@@ -516,27 +515,27 @@ void Game_run ( void )
    if ( gv->formation_zone == ZONE_0 )
    {
       gv->plives   = 0;
-      if ( player->active ) 
+      if ( player->active )
       {
          Explosions_add ( player );
          player->active = FALSE;
       }
    }
-   
+
    /*
     *
-    * Move Objects and Update Animations : 
+    * Move Objects and Update Animations :
     * formation, alien_bombs, ufo, and player_missile
     *
     */
    Aliens_move ();
 
-   if ( pm->active ) 
+   if ( pm->active )
       pm->actionfn ( pm );
-  
+
    /*
     *
-    *  Draw Objects : 
+    *  Draw Objects :
     *
     *  special effects
     *  alien: formation, bombs, and ufo
@@ -544,18 +543,18 @@ void Game_run ( void )
     *  player
     *
     */
-   
+
    Stars_draw ( cam_mat );
    Jumpgate_animate ( cam_mat );
    Explosions_draw ( cam_mat );
    One_up_draw ( cam_mat );
 
-   /* 
-    * major hack!! this is NOT the right way to draw in 3d 
+   /*
+    * major hack!! this is NOT the right way to draw in 3d
     * may the universe forgive my transgression!
     *
     * */
-   if ( ufo->active ) 
+   if ( ufo->active )
       Add_obj_2_world ( ufo );
    Add_obj_2_world ( &the_formation );
 
@@ -563,7 +562,7 @@ void Game_run ( void )
    {
       Add_obj_2_world ( abomb );
    }
-   
+
    if ( pm->active )
       Add_obj_2_world ( pm );
    if ( player->active )
@@ -605,7 +604,7 @@ void Game_run ( void )
          SW_RESET;
          Game_actionfn = Game_gameover;
       }
-      else 
+      else
       {
          if ( gv->new_level && ( Objlist_count ( abombs ) == 0 ) )
          {
@@ -680,7 +679,7 @@ int Z_compare ( const void *obj0, const void *obj1 )
 
    o0 = ( OBJECT * ) obj0;
    o1 = ( OBJECT * ) obj1;
-   
+
    if ( o0->pos[ZPOS] < o1->pos[ZPOS] )
       return -1;
    else if ( o0->pos[ZPOS] > o1->pos[ZPOS] )
@@ -710,7 +709,7 @@ float Dist_pt_2_line ( VECTOR4 p, VECTOR4 l0, VECTOR4 l1 )
    VECTOR4 q;
    float n, d, w, t, dist;
 
-   /* 
+   /*
     * calc adjusted position of projectile along the
     * line segment formed by old_pos to new_pos
     * use this for calculating distance between moving
@@ -728,15 +727,15 @@ float Dist_pt_2_line ( VECTOR4 p, VECTOR4 l0, VECTOR4 l1 )
    Vector_sub ( p, l0, l0_p );
    Vector_sub ( l1, l0, l0_l1 );
 
-   /* 
+   /*
     * don't try to take Vector_norm if division by zero
     * will result. TBB
     *
-    * check using Vec_mag_squared instead of 
-    * xpos == 0 && ypos == 0 && zpos == 0 
+    * check using Vec_mag_squared instead of
+    * xpos == 0 && ypos == 0 && zpos == 0
     * Don
     */
-   
+
    if ( Vector_mag_squared ( l0_l1 ) < 1.0f )
    {
       q[XPOS] = l0[XPOS];
@@ -744,8 +743,8 @@ float Dist_pt_2_line ( VECTOR4 p, VECTOR4 l0, VECTOR4 l1 )
       q[ZPOS] = l0[ZPOS];
 
       dist = Vector_dist_squared ( q, p );
-   } 
-   else 
+   }
+   else
    {
       d = l1[ZPOS] - l0[ZPOS];
 
@@ -766,7 +765,7 @@ float Dist_pt_2_line ( VECTOR4 p, VECTOR4 l0, VECTOR4 l1 )
          q[XPOS] = l0[XPOS] + ( l0_l1[XPOS] * w );
          q[YPOS] = l0[YPOS] + ( l0_l1[YPOS] * w );
          q[ZPOS] = l0[ZPOS] + ( l0_l1[ZPOS] * w );
-            
+
          n = q[ZPOS] - l0[ZPOS];
 
          t = n / d;
