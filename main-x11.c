@@ -465,8 +465,16 @@ long Timer_msec ( TIMER *t )
    msec = ((t->t1.tv_sec-t->t0.tv_sec)*1000L)+
       ((t->t1.tv_usec-t->t0.tv_usec)/1000L);
 
-   t->t0.tv_sec = t->t1.tv_sec;
-   t->t0.tv_usec = t->t1.tv_usec;
+   if ( msec > 0) {
+      /* we need to update right away for slow computers, but for
+       * really fast computers we need to accumilate time before
+       * we can update these values. Seconds followed loosely. */
+      t->t0.tv_usec += msec*1000;
+      if ( t->t0.tv_usec >= 1000000 ) {
+         t->t0.tv_usec -= 1000000;
+         t->t0.tv_sec = t->t1.tv_sec;
+      }
+   }
 
    return msec;
 }
