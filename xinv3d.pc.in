@@ -8,6 +8,6 @@ mandir=@mandir@
 localedir=@localedir@
 
 Name: xinv3d
-Description: XInvaders 3D is a 3D Vector Graphics Space Invaders clone for X11.
+Description: A 3D Space Invaders clone for X11.
 URL: https://packages.debian.org/sid/xinv3d
 Version: @XINV3D_VERSION@

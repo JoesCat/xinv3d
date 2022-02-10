@@ -6,8 +6,8 @@
 AC_PREREQ(2.61)
 
 m4_define([xinv3d_version], [1.4.0])
-AC_INIT([xinv3d],[xinv3d_version],[packages@qa.debian.org],
-	[xinv3d],[https://packages.debian.org/sid/xinv3d])
+AC_INIT([xinv3d],[xinv3d_version],[digital@joescat.com],
+	[xinv3d],[https://github.com/JoesCat/xinv3d/releases])
 AM_INIT_AUTOMAKE([foreign -Wall])
 AC_CANONICAL_BUILD
 AC_CANONICAL_HOST

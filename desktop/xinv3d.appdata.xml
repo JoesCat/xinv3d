@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2021 Joe Da Silva <digital@joescat.com> -->
+<!-- Copyright 2022 Joe Da Silva <digital@joescat.com> -->
 <application>
   <id type="desktop">xinv3d.desktop</id>
   <license>CC0-1.0</license>
   <name>XInvaders 3D</name>
   <description>
     <p xml:lang="C">
-    XInvaders 3D is a 3D vector-based space-invaders clone for the X Window System.</p>
+    A 3D Space Invaders clone for the X Window System.
+
+    You are a lone star fighter facing endless waves of space aliens.
+    Your sole objective is to shoot down as many aliens as you can.
+    All objects are represented with 3D vector graphics, allowing the
+    aliens to grow in size as they move closer to you.</p>
   </description>
-  <url type="homepage">https://tracker.debian.org/pkg/xinv3d</url>
+  <url type="homepage">https://github.com/JoesCat/xinv3d/releases</url>
 </application>

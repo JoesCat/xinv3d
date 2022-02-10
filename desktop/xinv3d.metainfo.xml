@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2021 Joe Da Silva <digital@joescat.com> -->
+<!-- Copyright 2022 Joe Da Silva <digital@joescat.com> -->
 <component type="desktop">
   <id>xinv3d</id>
   <launchable type="desktop-id">xinv3d.desktop</launchable>
@@ -8,21 +8,22 @@
   <summary>3D space invaders for X</summary>
   <description>
     <p xml:lang="C">
-    XInvaders 3D is a 3D vector-based space-invaders clone for the X Window System.</p>
+    A 3D Space Invaders clone for the X Window System.</p>
+    <p xml:lang="C">
+    You are a lone star fighter facing endless waves of space aliens.
+    Your sole objective is to shoot down as many aliens as you can.
+    All objects are represented with 3D vector graphics, allowing the
+    aliens to grow in size as they move closer to you.</p>
   </description>
-  <url type="homepage">https://tracker.debian.org/pkg/xinv3d</url>
-  <url type="help">https://packages.debian.org/unstable/xinv3d</url>
-  <url type="bugtracker">https://bugs.debian.org/xinv3d</url>
-  <url type="donation">https://www.debian.org/donations</url>
-  <update_contact>packages@qa.debian.org</update_contact>
+  <url type="homepage">https://github.com/JoesCat/xinv3d/releases</url>
+  <url type="bugtracker">https://github.com/JoesCat/xinv3d/issues</url>
   <content_rating type="oars-1.1"/>
   <releases>
     <release date="2021-09-26" version="1.4.0"/>
-    <release date="2009-02-26" version="1.3.6-6"/>
   </releases>
-  <project_license>GPL</project_license>
+  <project_license>GPL-2.0+</project_license>
   <developer_name>Don Llopis</developer_name>
   <screenshots>
-    <screenshot type="default">https://screenshots.debian.net/shrine/screenshot/7607/simage/thumb-631dd983834ee61463224bfdd61d00a9.png</screenshot>
+    <screenshot type="default" width="650" height="514">https://github.com/JoesCat/xinv3d/raw/master/xinv3d-screenshot.png</screenshot>
   </screenshots>
 </component>

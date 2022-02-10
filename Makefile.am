@@ -27,4 +27,4 @@ xinv3d.$(OBJEXT): ${noinst_HEADERS}
 
 xinv3d_LDADD = -lX11 -lm
 
-EXTRA_DIST = main-dos.c main-w.c LICENSE README.dos README.win xinvaders3d.lsm xinv3d.6 ${noinst_HEADERS}
+EXTRA_DIST = main-dos.c main-w.c LICENSE README README.dos README.win xinv3d-screenshot.png xinv3d.6 ${noinst_HEADERS}

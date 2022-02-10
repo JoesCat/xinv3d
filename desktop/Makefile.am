@@ -26,13 +26,6 @@ appdata_DATA = xinv3d.appdata.xml
 metainfodir = ${datarootdir}/metainfo
 metainfo_DATA = xinv3d.metainfo.xml
 
-# Where MIME data goes (Support for .xball files, for instance).
-mimedir = ${datarootdir}/mime
-mimepackagesdir = ${datarootdir}/mime/packages
-mimepackages_DATA = xinv3d.xml
-
-#update-mime-database ${mimedir}
-
 ICONSDIR = ${datarootdir}/icons
 HICOLORDIR = ${datarootdir}/icons/hicolor
 hicolor32x32dir = $(HICOLORDIR)/32x32/apps
@@ -48,6 +41,6 @@ hicolor256x256_DATA = 256x256/xinv3d.png
 deskpixsdir = ${datarootdir}/pixmaps
 deskpixs_DATA = 32x32/xinv3d.xpm 32x32/xinv3d.png
 
-EXTRA_DIST = xinv3d.desktop xinv3d.appdata.xml xinv3d.metainfo.xml xinv3d.xml \
+EXTRA_DIST = xinv3d.desktop xinv3d.appdata.xml xinv3d.metainfo.xml \
 	32x32/xinv3d.xpm 32x32/xinv3d.png 64x64/xinv3d.png 128x128/xinv3d.png \
 	256x256/xinv3d.png
