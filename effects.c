@@ -23,7 +23,7 @@
 
 /*------------------------------------------------------------------
  * Stars
- *  
+ *
  *
 ------------------------------------------------------------------*/
 
@@ -45,7 +45,7 @@ VECTOR4 star_thrust[4] = {{ 0.0f, 0.0f, 50.0f, 1.0f },
                          { 0.0f, 0.0f, 25.0f, 1.0f },
                          { 0.0f, 0.0f, 15.0f, 1.0f },
                          { 0.0f, 0.0f, 10.0f, 1.0f } };
-                 
+
 
 void Stars_init ( void )
 {
@@ -69,7 +69,7 @@ void Stars_init ( void )
             stars[i].pos[YPOS] *= -1.0f;
          }
       }
-      
+
       stars[i].thrust = m;
       stars[i].color = WHITE - (m*15);
    }
@@ -83,8 +83,8 @@ void Stars_draw ( MATRIX4 r )
    for ( i=0; i<MAX_STARS; i++ )
    {
       j = stars[i].thrust;
-      stars[i].pos[ZPOS] += star_thrust[j][ZPOS] * gv->fadjust; 
-      
+      stars[i].pos[ZPOS] += star_thrust[j][ZPOS] * gv->fadjust;
+
       if ( stars[i].pos[ZPOS] > -1.0f )
       {
          m = rand() % 4;
@@ -100,7 +100,7 @@ void Stars_draw ( MATRIX4 r )
 
 /*------------------------------------------------------------------
  * Explosions
- *  
+ *
  *
 ------------------------------------------------------------------*/
 
@@ -115,7 +115,7 @@ enum explosions_enum
    EXPLOSION_COLOR_INC   = 15
 };
 
-struct EXPLOSIONSTRUCT 
+struct EXPLOSIONSTRUCT
 {
    VECTOR4  pos[MAX_PARTICLES];
    int  thrust[MAX_PARTICLES];
@@ -143,13 +143,13 @@ VECTOR4 pthrust[8] = { {-2.0f, 0.0f, 0.0f, 1.0f},
 
 VECTOR4 shard[3] = { {-5.0f, 0.0f, 0.0f, 1.0f},
                     { 0.0f, 5.0f, 0.0f, 1.0f},
-                    { 5.0f, -5.0f, 0.0f, 1.0f}}; 
+                    { 5.0f, -5.0f, 0.0f, 1.0f}};
 
 
 void Explosions_clear ( void )
 {
    int i, j;
-   
+
    ecur = 0;
    ecount = 0;
    pcur = 0;
@@ -187,7 +187,7 @@ void Explosions_add ( OBJECT *obj )
    explosions[ecur].thrust[1] = pcur+1;
    explosions[ecur].thrust[2] = pcur+2;
    explosions[ecur].thrust[3] = pcur+3;
-   
+
    ecur++;
    pcur += 4;
    ecount++;
@@ -234,7 +234,7 @@ void Explosions_draw ( MATRIX4 r )
             explosions[i].pos[j][XPOS] += pthrust[k][XPOS] * gv->fadjust;
             explosions[i].pos[j][YPOS] += pthrust[k][YPOS] * gv->fadjust;
             explosions[i].pos[j][ZPOS] += pthrust[k][ZPOS] * gv->fadjust;
-   
+
             Matrix_vec_mult ( r, explosions[i].pos[j], tmp[0] );
             Matrix_copy ( r, tmp_mat );
             Matrix_set_trans ( tmp_mat, tmp[0] );
@@ -252,7 +252,7 @@ void Explosions_draw ( MATRIX4 r )
 
 /*------------------------------------------------------------------
  * Jump-gate
- *  
+ *
  *
 ------------------------------------------------------------------*/
 
@@ -283,37 +283,37 @@ static VECTOR4 jgvert[32] =
    {-0.0f, 10.0f, -10.0f, 1.0f},
    {10.0f, 0.0f, -10.0f, 1.0f},
    {0.0f, -10.0f, 10.0f, 1.0f},
-   
+
    {-30.0f, 0.0f, 30.0f, 1.0f},
    {0.0f, 30.0f, -30.0f, 1.0f},
    {30.0f, 0.0f, -30.0f, 1.0f},
    {0.0f, -30.0f, 30.0f, 1.0f},
-  
+
    {-50.0f, 0.0f, 50.0f, 1.0f},
    {0.0f, 50.0f, -50.0f, 1.0f},
    {50.0f, 0.0f, -50.0f, 1.0f},
    {0.0f, -50.0f, 50.0f, 1.0f},
-   
+
    {-70.0f, 0.0f, 70.0f, 1.0f},
    {0.0f, 70.0f, -70.0f, 1.0f},
    {70.0f, 0.0f, -70.0f, 1.0f},
    {0.0f, -70.0f, 70.0f, 1.0f},
-   
+
    {-10.0f, 0.0f, -10.0f, 1.0f},
    {0.0f, 10.0f, 10.0f, 1.0f},
    {10.0f, 0.0f, 10.0f, 1.0f},
    {0.0f, -10.0f, -10.0f, 1.0f},
-   
+
    {-30.0f, 0.0f, -30.0f, 1.0f},
    {0.0f, 30.0f, 30.0f, 1.0f},
    {30.0f, 0.0f, 30.0f, 1.0f},
    {0.0f, -30.0f, -30.0f, 1.0f},
-  
+
    {-50.0f, 0.0f, -50.0f, 1.0f},
    {0.0f, 50.0f, 50.0f, 1.0f},
    {50.0f, 0.0f, 50.0f, 1.0f},
    {0.0f, -50.0f, -50.0f, 1.0f},
-   
+
    {-70.0f, 0.0f, -70.0f, 1.0f},
    {0.0f, 70.0f, 70.0f, 1.0f},
    {70.0f, 0.0f, 70.0f, 1.0f},
@@ -335,7 +335,7 @@ void Jumpgate_init ( void )
    jgcur   = 0;
    jcount  = 0;
 }
-   
+
 void Jumpgate_open ( VECTOR4 pos, int dir )
 {
    if ( jcount > MAX_JUMPGATES-1 ) return;
@@ -388,9 +388,9 @@ void Jumpgate_animate ( MATRIX4 r )
          Matrix_set_trans ( tmp_mat, tmp[0] );
 
          f0 = ( jgates[i].frame + 1 ) * 4;
-         Matrix_vec_multn ( tmp_mat, 
+         Matrix_vec_multn ( tmp_mat,
                &jgvert[jgates[i].dir], tmp, f0 );
-         Camera_project_points ( tmp, p, f0 ); 
+         Camera_project_points ( tmp, p, f0 );
          for ( j=0; j<((f0*2)-4); j+=8 )
          {
             Draw_line ( p[0+j], p[1+j], p[2+j], p[3+j], GREEN );
@@ -404,12 +404,12 @@ void Jumpgate_animate ( MATRIX4 r )
 
 /*------------------------------------------------------------------
  * One-up!!!
- *  
+ *
  *
 ------------------------------------------------------------------*/
 
 enum oneup_enum
-{ 
+{
    ONEUP_LIFE       = 2000,
    ONEUP_BLEND_TIME = 200
 };
@@ -426,11 +426,11 @@ struct ONEUPSTRUCT
 static VECTOR4 one_up_vert[10] =
 {
    {-40.0f, 20.0f, 0.0f, 1.0f} ,  /* 1 */
-   {-40.0f, -20.0f, 0.0f, 1.0f }, 
+   {-40.0f, -20.0f, 0.0f, 1.0f },
    {-20.0f, 20.0f, 0.0f, 1.0f  }, /* U */
    {-20.0f, -20.0f, 0.0f, 1.0f },
    { 10.0f, -20.0f, 0.0f, 1.0f },
-   { 10.0f, 20.0f, 0.0f, 1.0f  }, 
+   { 10.0f, 20.0f, 0.0f, 1.0f  },
    { 20.0f, 20.0f, 0.0f, 1.0f  }, /* P */
    { 20.0f, -20.0f, 0.0f, 1.0f },
    { 60.0f, 0.0f, 0.0f, 1.0f },
