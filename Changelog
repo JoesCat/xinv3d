@@ -1,3 +1,10 @@
+xinv3d (1.5.0)
+
+  * Timing bug for very fast computers fixed. Original speeds restored.
+  * Fixed empty stars field in lower-right quadrant before game starts.
+
+ -- Joe Da Silva <digital@joescat.com>  Tue, 22 Feb 2022 08:36:00 -0800
+
 xinv3d (1.4.0)
 
   * Debian Orphaned xinv3d brought up to date and is buildable with current PCs.
